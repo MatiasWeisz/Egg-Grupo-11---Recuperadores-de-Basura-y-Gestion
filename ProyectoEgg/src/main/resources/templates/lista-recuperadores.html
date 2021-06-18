@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lista Libros</title> 
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    </head>
+    <body> 
+        
+        <div class="container mt-5 main">
+            <h1>Listado Recuperadores</h1>
+            <hr class="mb-5"/>
+             
+        <table class="table table-hover table-sm table-bordered">
+            <thead class="table-secondary text-center">
+                <tr>
+                    <th class="col-md-4 px-md-2" scope="col">DNI</th>
+                    <th class="col-md-4 px-md-2" scope="col">Nombre</th>
+                    <th class="col-md-4 px-md-2" scope="col">Apellido</th>
+                    <th class="col-md-4 px-md-2" scope="col">Coordenada</th>
+                    <th class="col-md-4 px-md-2" scope="col">Puntaje</th>
+                    <th class="col-md-4 px-md-2" scope="col">Telefono</th>
+                    <th class="col-md-4 px-md-2" scope="col">Capacidad Maxima</th>
+                    <th class="col-md-4 px-md-2" scope="col">Cantidad de rutas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Traduccion seria, para cada libro que haya en libros, capturo una variable de timeleaf
+                y voy a hacer algo, en este caso, la tabla y en cada td. El  texto que va a renderizar en 
+                la etiqueta, va a ser el que le pase como parametro en el atributo de timellefa-->
+                <th scope="row"></th>
+                <tr th:each="recuperador: ${recuperadores}">
+                    <td class="col-md-4 px-md-2" th:text="${recuperador.dni}"></td>
+                    <td class="col-md-4 px-md-2" th:text="${recuperador.nombre}"></td>
+                    <td class="col-md-4 px-md-2" th:text="${recuperador.apellido}"></td>
+                    <td class="col-md-4 px-md-2" th:text="${recuperador.puntaje}"></td>
+                    <td class="col-md-4 px-md-2" th:text="${recuperador.telefono}"></td>
+                    <td class="col-md-4 px-md-2" th:text="${recuperador.capacidadMax}"></td>
+                    <td class="col-md-4 px-md-2" th:text="${recuperador.cantidadRutas}"></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="es" xlmns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Nuevo Recuperador</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Las barritas verticales me permiten escribir un texto estatico 
+        dentro de lo que seria tymeleaf(en tymeleaf en si, solo se puede escribir
+        texto que sea de tymeleaf, osea lo que serian las variables-->
+        <title th:text="|${title} - Clasifica Mendoza|"></title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-5 main">
+        <h1 th:text="${title}"></h1>
+        <!--Estos dos action no son lo mismo, el primero va a hacer que cuando guarde
+        vaya a libros/guardar y el otro action es porque va a haber otra opcion de modificar
+        y va a ser para cuando queramos modificar con los dos guion bajo establezco el action
+        como una variable de TL.
+        Con el th object lo que le digo a TL es que dentro del formulario voy a usar un objeto
+        en el submitEn el submit la idea es tambbien por el tema que lo mismo se usa para modificar o para crear
+        entonces seria como un if: if acttion = guardar, si es true se ejecuta lo que esta despues del ?
+        si es false se ejecuta lo que estad espues de los dos puntos-->
+        <form id="formulario" class="needs-validation" th:action="@{/recuperadores/__${action}__}" method="POST"
+              th:object="${recuperador}" autocomplete="off" novalidate>
+            <div class="form-floating mb-3 col-xl-6">
+            <input type="number" class="form-control" placeholder="dni" th:field="*{dni}"/>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+            <input id="nombre" class="form-control" type="text" placeholder="Nombre" th:field="*{nombre}"/>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+            <input id="apellido" class="form-control" type="text" placeholder="Apellido" th:field="*{apellido}"/>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">             
+            <input id="coordenadas" class="form-control" type="text" placeholder="Coordenadas" th:field="*{coordenada}"/>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+            <input id="puntaje" class="form-control" type="number" placeholder="Puntaje" th:field="*{puntaje}"/>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+            <input id="telefono" class="form-control" type="number" placeholder="Telefono" th:field="*{telefono}"/>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+            <input id="capacidadMax" class="form-control" type="number" placeholder="Capacidad Maxima" th:field="*{capacidadMax}"/>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+            <input id="cantidadRutas" class="form-control" type="number" placeholder="Cantidad Rutas" th:field="*{cantidadRutas}"/>
+            </div>
+            <div class="row">
+                <div class="col-xl-3">
+            <button class="btn btn-success" type="submit" th:text="${action == 'guardar'} ? 'Agregar Recuperador':'Guardar Cambios'"/></button>
+                </div>
+            </div>
+            
+            </form>
+    </body>
+</html>
