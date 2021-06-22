@@ -27,7 +27,7 @@ public class Recuperador implements Serializable {
     @ManyToOne
     private Ruta ruta;
     
-    @OnetoOne
-    private List<Comentario> comentario;
-    
+//    @OnetoOne
+//    private List<Comentario> comentario;
+//    
 }
