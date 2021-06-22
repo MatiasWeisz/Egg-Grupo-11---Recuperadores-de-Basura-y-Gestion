@@ -23,7 +23,7 @@ public class RutaServicio {
         ruta.setFecha(fecha);
         ruta.setCantidadClasificadores(cantidadClasificadores);
         ruta.setValorRuta(valorRuta);
-        ruta.setRecuperador(recuperadores);
+        ruta.setRecuperadores(recuperadores);
 
         rutaRepositorio.save(ruta);
     }

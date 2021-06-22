@@ -6,6 +6,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,10 +21,14 @@ public class Ruta implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String departamento;
+    
+    @Temporal(TemporalType.DATE)
     private Date fecha;
     private int cantidadClasificadores;
     private Double valorRuta;
-    private List<Recuperador> recuperador;
+    
+    @OneToMany (mappedBy = "ruta")
+    private List<Recuperador> recuperadores;
     
     //Este ultimo es para crear la lista de direcciones para generar la ruta
     //private List <Clasificadores> listaClasificadores;

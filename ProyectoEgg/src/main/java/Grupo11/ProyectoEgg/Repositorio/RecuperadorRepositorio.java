@@ -15,6 +15,6 @@ public interface RecuperadorRepositorio extends JpaRepository <Recuperador,Long>
     List<Recuperador> buscarPorNombre(@Param("nombre") String nombre);
     
     @Modifying
-    @Query ("UPDATE Recuperador r SET r.nombre = :nombre, r.apellido =:apellido, r.coordenada =:coordenada, r.puntaje =:puntaje, r.telefono =:telefono, r.capacidadMax =:capacidadMax, r.cantidadRutas =: cantidadRutas")
+    @Query ("UPDATE Recuperador r SET r.nombre = :nombre, r.apellido =:apellido, r.coordenada =:coordenada, r.puntaje =:puntaje, r.telefono =:telefono, r.capacidadMax =:capacidadMax, r.cantidadRutas =:cantidadRutas WHERE r.dni =:dni")
     void modificar (@Param("dni") Long dni,@Param("nombre") String nombre,@Param("apellido") String apellido, @Param("coordenada") String coordenada, @Param("puntaje")Double puntaje, @Param("telefono") Long telefono, @Param("capacidadMax") int capacidadMax, @Param("cantidadRutas")int cantidadRutas );
 }
