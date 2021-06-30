@@ -22,23 +22,18 @@ public class RutaServicio {
     private RecuperadorRepositorio recuperadorRepositorio;
 
     @Transactional
-    public void crearRuta(String departamento, Date fecha, int cantidadClasificadores, Double valorRuta, List<Recuperador> recuperadores) {
+    public void crearRuta(String departamento, Date fecha, int cantidadClasificadores, Double valorRuta, Recuperador recuperadores) {
         Ruta ruta = new Ruta();
         ruta.setDepartamento(departamento);
         ruta.setFecha(fecha);
         ruta.setCantidadClasificadores(cantidadClasificadores);
         ruta.setValorRuta(valorRuta);
-        ruta.setRecuperadores(recuperadores);
-
+        ruta.setRecuperador(recuperadores);
         rutaRepositorio.save(ruta);
     }
 
     @Transactional
-    public void modifcicarRuta(String id, String departamento, Date fecha, int cantidadClasificadores, Double valorRuta, List<Recuperador> recuperadores) {
-        
-        
-        // rutaRepositorio.modificar(id, departamento, fecha, cantidadClasificadores, valorRuta, recuperadores);
-
+    public void modifcicarRuta(String id, String departamento, Date fecha, int cantidadClasificadores, Double valorRuta, Recuperador recuperador) {
 //        Ruta rutaOpcional = rutaRepositorio.findById(id).get();
 //        rutaOpcional.setDepartamento(departamento);
 //        rutaOpcional.setFecha(fecha);
@@ -52,6 +47,7 @@ public class RutaServicio {
 //            
 //        }
     
+              rutaRepositorio.modificar(id, departamento, fecha, cantidadClasificadores, valorRuta, recuperador);
 
     }
 

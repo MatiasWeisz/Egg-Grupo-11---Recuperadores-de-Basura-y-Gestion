@@ -31,9 +31,7 @@
         autocomplete="off"
         novalidate
       >
-
-         <input type="hidden" th:field="*{id}">
-
+        <input type="hidden" th:field="*{id}" />
 
         <div class="form-floating mb-3 col-x1-6">
           <input
@@ -90,19 +88,18 @@
           <div class="invalid-feedback">Debe ingresar un valor a la ruta</div>
         </div>
 
-          <div class="form-floating mb-3 col-xl-6">
+        <div class="form-floating mb-3 col-xl-6">
           <select
             id="form-label select-label"
             class="form-select"
             aria-label="Elegir recuperadores"
-            th:field="*{recuperadores}"
-            multiple
+            th:field="*{recuperador}"
           >
-            <option value="" selected>Elegir Recuperadores</option>
+            <option value="" selected>Elegir Recuperador</option>
             <option
               th:each="recuperador : ${recuperadores}"
               th:text="${recuperador.nombre + ' ' + recuperador.apellido}"
-              th:value="${recuperador.dni}" 
+              th:value="${recuperador.dni}"
             ></option>
           </select>
           <label class="form-label select-label"></label>
@@ -119,21 +116,19 @@
     </div>
 
     <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-    crossorigin="anonymous"
-  ></script>
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
 
-  <script
-    type="application/javascript"
-    th:src="@{/js/bootstrap-multiselect.js}"
-  ></script>
-  <link
-    rel="stylesheet"
-    th:href="@{/css/bootstrap-multiselect.css}"
-    type="text/css"
-  />
-
-
+    <script
+      type="application/javascript"
+      th:src="@{/js/bootstrap-multiselect.js}"
+    ></script>
+    <link
+      rel="stylesheet"
+      th:href="@{/css/bootstrap-multiselect.css}"
+      type="text/css"
+    />
   </body>
 </html>

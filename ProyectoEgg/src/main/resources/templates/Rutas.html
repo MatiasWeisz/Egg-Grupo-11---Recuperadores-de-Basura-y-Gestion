@@ -35,7 +35,7 @@
                         <th class="col-md-1 ps-2" scope="col">Fecha</th>
                         <th class="col-md-1 ps-2" scope="col">Cantidad de Clasificadores</th>
                         <th class="col-md-1 ps-2" scope="col">Valor de la ruta</th>
-                        <th class="col-md-1 ps-2" scope="col">Recuperadores</th>
+                        <th class="col-md-1 ps-2" scope="col">Recuperador</th>
                         <th class="col-md-3 px-md-2" scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -48,12 +48,7 @@
                         <td class="col-md-3 px-md-2" th:text="${ruta.valorRuta}"></td>
                         
                         
-                        <td class="col-md-3 px-md-2" >
-                            <div th:each="recuperador : ${recuperadores}">
-                                <span th:text="|${recuperador.nombre}|"></span>
-                            </div>
-                               
-                        </td>
+                        <td class="col-md-3 px-md-2"  th:text="|${ruta.recuperador.nombre + ' ' + ruta.recuperador.apellido + ' DNI: ' +ruta.recuperador.dni}|">
 
 
                             <td class="col-md-3 px-md-2 d-flex justify-content-around w-100">
