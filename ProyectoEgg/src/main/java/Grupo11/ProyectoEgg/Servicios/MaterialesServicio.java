@@ -7,6 +7,7 @@ package Grupo11.ProyectoEgg.Servicios;
 
 import Grupo11.ProyectoEgg.Entidad.Materiales;
 import Grupo11.ProyectoEgg.Repositorio.MaterialesRepositorio;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,7 +32,11 @@ public class MaterialesServicio {
     public void modificar (Long carton, Long plastico, Long latas, Long vidrio, Long papel){
         materialesRepositorio.modificar(carton,plastico,latas,vidrio,papel);
     }
-    
+    @Transactional//Indicamos que no me va a modificar la BD solo la va a leer, no es obligatorio
+    public List<Materiales> buscarTodos(){
+        List<Materiales> materiales = materialesRepositorio.findAll();
+        return materiales;
+    }
     @Transactional
     public void eliminar (Long id){
         materialesRepositorio.deleteById(id);
