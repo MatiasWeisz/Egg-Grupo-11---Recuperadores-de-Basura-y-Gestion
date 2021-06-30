@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
  * @author german
  */
 @Controller
-@RequestMapping("/Recuperadores")
+@RequestMapping("/recuperadores")
 public class RecuperadorControlador {
     @Autowired
     private RecuperadorServicio recuperadorServicio;
@@ -43,8 +43,8 @@ public ModelAndView agregarRecuperador(){
     return mav;
 }
 @PostMapping("/guardar")
-public RedirectView guardar(@RequestParam Long dni, @RequestParam String nombre, @RequestParam String apellido,@RequestParam String coordenada, @RequestParam Double puntaje, @RequestParam Long telefono, @RequestParam int capacidadMax, @RequestParam int cantidadRutas){
-    recuperadorServicio.crearRecuperador(dni, nombre, apellido, coordenada, puntaje, telefono, capacidadMax, cantidadRutas);
-    return new RedirectView("/Recuperadores/ver-todos");
+public RedirectView guardar(@RequestParam Long dni, @RequestParam String nombre, @RequestParam String apellido,@RequestParam String username,@RequestParam String clave,@RequestParam String coordenada, @RequestParam Double puntaje, @RequestParam Long telefono, @RequestParam int capacidadMax, @RequestParam int cantidadRutas){
+    recuperadorServicio.crear(dni, nombre, apellido,username,clave,coordenada, puntaje, telefono, capacidadMax, cantidadRutas);
+    return new RedirectView("/recuperadores/ver-todos");
 }
 }

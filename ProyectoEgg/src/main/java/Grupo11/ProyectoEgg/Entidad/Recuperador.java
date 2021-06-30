@@ -24,6 +24,8 @@ public class Recuperador implements Serializable {
     private long dni;
     private String nombre;
     private String apellido;
+    private String username;
+    private String clave;
     private String coordenada;
     private Double puntaje;
     private Long telefono;

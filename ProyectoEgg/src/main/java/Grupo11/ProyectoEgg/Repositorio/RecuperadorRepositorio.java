@@ -7,6 +7,8 @@ package Grupo11.ProyectoEgg.Repositorio;
 
 import Grupo11.ProyectoEgg.Entidad.Recuperador;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,6 +17,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RecuperadorRepositorio extends JpaRepository<Recuperador, Long>{
+@Query("SELECT r From Recuperador r WHERE r.username = :username")
+Recuperador buscarPorNombreDeUsuario(@Param("username") String username);
 }
 
 
