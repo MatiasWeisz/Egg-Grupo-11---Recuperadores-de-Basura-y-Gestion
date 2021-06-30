@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+  />
+    <title>Rutas</title>
+</head>
+<body>
+
+    <nav th:replace="fragments :: navbar"></nav>
+
+    <div class="container mt-5 main">
+        <h1>Listado de Rutas</h1>
+        <hr/>
+        <div th:if="${rutas.isEmpty}">
+            <h5>Todavía no hay rutas cargadas. <a th:href="@{/rutas/crear}">Crear Ruta.</a> </h5>
+        </div>
+        <div th:unless="${rutas.isEmpty}" class="table-responsive">
+            <table class="table table-hover table-sm table-bordered">
+                <thead class="table-secondary text center">
+                    <tr>
+                        <th class="col-md-1 ps-2" scope="col">ID</th>
+                        <th class="col-md-1 ps-2" scope="col">Departamento</th>
+                        <th class="col-md-1 ps-2" scope="col">Fecha</th>
+                        <th class="col-md-1 ps-2" scope="col">Cantidad de Clasificadores</th>
+                        <th class="col-md-1 ps-2" scope="col">Valor de la ruta</th>
+                        <th class="col-md-1 ps-2" scope="col">Recuperadores</th>
+                        <th class="col-md-3 px-md-2" scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ruta : ${rutas}">
+                        <th class="col-md-1 px-md-2 text center" scope="row" th:text="${ruta.id}"></th>
+                        <td class="col-md-3 px-md-2" th:text="${ruta.departamento}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${ruta.fecha}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${ruta.cantidadClasificadores}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${ruta.valorRuta}"></td>
+                        
+                        
+                        <td class="col-md-3 px-md-2" >
+                            <div th:each="recuperador : ${recuperadores}">
+                                <span th:text="|${recuperador.nombre}|"></span>
+                            </div>
+                               
+                        </td>
+
+
+                            <td class="col-md-3 px-md-2 d-flex justify-content-around w-100">
+                                <a class="btn btn-secondary btn-sm" th:href="@{/rutas/editar/__${ruta.id}__}">Editar</a>
+                                  <form th:action="@{/rutas/eliminar/__${ruta.id}__}" method="post">
+                                      <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                  </form>
+                              </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>

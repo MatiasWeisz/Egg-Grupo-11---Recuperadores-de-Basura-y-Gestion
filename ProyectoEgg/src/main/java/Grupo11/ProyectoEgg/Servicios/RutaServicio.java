@@ -2,7 +2,9 @@ package Grupo11.ProyectoEgg.Servicios;
 
 import Grupo11.ProyectoEgg.Entidad.Recuperador;
 import Grupo11.ProyectoEgg.Entidad.Ruta;
+import Grupo11.ProyectoEgg.Repositorio.RecuperadorRepositorio;
 import Grupo11.ProyectoEgg.Repositorio.RutaRepositorio;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +17,9 @@ public class RutaServicio {
 
     @Autowired
     private RutaRepositorio rutaRepositorio;
+
+    @Autowired
+    private RecuperadorRepositorio recuperadorRepositorio;
 
     @Transactional
     public void crearRuta(String departamento, Date fecha, int cantidadClasificadores, Double valorRuta, List<Recuperador> recuperadores) {
@@ -30,7 +35,24 @@ public class RutaServicio {
 
     @Transactional
     public void modifcicarRuta(String id, String departamento, Date fecha, int cantidadClasificadores, Double valorRuta, List<Recuperador> recuperadores) {
-        rutaRepositorio.modificar(id, departamento, fecha, cantidadClasificadores, valorRuta, recuperadores);
+        
+        
+        // rutaRepositorio.modificar(id, departamento, fecha, cantidadClasificadores, valorRuta, recuperadores);
+
+//        Ruta rutaOpcional = rutaRepositorio.findById(id).get();
+//        rutaOpcional.setDepartamento(departamento);
+//        rutaOpcional.setFecha(fecha);
+//        rutaOpcional.setCantidadClasificadores(cantidadClasificadores);
+//        rutaOpcional.setValorRuta(valorRuta);
+//        rutaOpcional.setRecuperadores(recuperadores);
+//        rutaRepositorio.save(rutaOpcional);
+//        
+//        for (Recuperador recuperador : recuperadores) {
+//            rutaOpcional.setRecuperadores(null);
+//            
+//        }
+    
+
     }
 
     @Transactional
@@ -48,9 +70,9 @@ public class RutaServicio {
         Optional<Ruta> rutaOpcional = rutaRepositorio.findById(id);
         return rutaOpcional.orElse(null);
     }
-    
+
     @Transactional
-    public void eliminarRuta (String id){
+    public void eliminarRuta(String id) {
         rutaRepositorio.deleteById(id);
     }
 

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import lombok.Data;
 
@@ -17,15 +18,14 @@ public class Recuperador implements Serializable {
     
     private String nombre;
     private String apellido;
-    private String coordenada;
   
     private Double puntaje;
     private Long telefono;
     private int capacidadMax;
     private int cantidadRutas;
     
-    @ManyToOne
-    private Ruta ruta;
+    @ManyToMany
+    private List <Ruta> rutas;
     
 //    @OnetoOne
 //    private List<Comentario> comentario;

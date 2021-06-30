@@ -15,12 +15,11 @@ public class RecuperadorServicio {
 
 
     @Transactional
-    public void crearRecuperador (Long dni, String nombre, String apellido, String coordenada, Double puntaje, Long telefono, int capacidadMax, int cantidadRutas){
+    public void crearRecuperador (Long dni, String nombre, String apellido, Long telefono, int capacidadMax, int cantidadRutas){
         Recuperador recuperador = new Recuperador();
         recuperador.setDni(dni);
         recuperador.setNombre(nombre);
         recuperador.setApellido(apellido);
-        recuperador.setCoordenada(coordenada);
         recuperador.setPuntaje(0.0);
         recuperador.setTelefono(telefono);
         recuperador.setCapacidadMax(capacidadMax);
@@ -29,8 +28,8 @@ public class RecuperadorServicio {
     }
     
     @Transactional
-    public void modificarRecuperador (Long dni, String nombre, String apellido, String coordenada, Double puntaje, Long telefono, int capacidadMax, int cantidadRutas){
-        recuperadorRepositorio.modificar(dni,nombre,apellido,coordenada,puntaje,telefono,capacidadMax,cantidadRutas);
+    public void modificarRecuperador (Long dni, String nombre, String apellido, Double puntaje, Long telefono, int capacidadMax, int cantidadRutas){
+        recuperadorRepositorio.modificar(dni,nombre,apellido,puntaje,telefono,capacidadMax,cantidadRutas);
     }
     
     @Transactional
