@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="|${title} - Clasifica|"></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<nav th:replace="fragments :: navbar"></nav>
+
+<body class="container">
+
+    <h1 th:text="${title}"></h1>
+
+    <hr class="mb-5 col-xl-12" />
+
+    <form id="formulario" class="needs-validation" th:action="@{/clasificadores/__${action}__}" method="POST"
+        th:object="${clasificador}" autocomplete="off" novalidate>
+
+        <!-- <input type="hidden" th:field="*{id}"/>  fijarse si no genera error -->
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="dni" class="form-control" type="number" placeholder="DNI" th:field="*{dni}" required />
+            <label for="DNI">DNI</label>
+            <div class="invalid-feedback">El documento es obligatorio</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="nombre" class="form-control" type="text" placeholder="Nombre" th:field="*{nombre}" required />
+            <label for="Nombre">Nombre</label>
+            <div class="invalid-feedback">El nombre es obligatorio</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="apellido" class="form-control" type="text" placeholder="Apellido" th:field="*{apellido}"
+                required />
+            <label for="Apellido">Apellido</label>
+            <div class="invalid-feedback">El apellido es obligatorio</div>
+        </div>
+
+        <!-- <div class="form-floating mb-3 col-xl-6">
+            <div class="form-group field-contact-email required">
+                <label class="control-label" for="contact-email">Email</label>
+                <input type="text" id="contact-email" class="form-control" name="Contact[email]" maxlength="255"
+                    aria-required="true">
+                <div class="help-block">Email es obligatorio</div>
+            </div>
+        </div> -->
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="email" class="form-control" type="email" name="username" placeholder="Email" th:field="*{email}"
+                required />
+            <label for="Email">Email</label>
+            <div class="invalid-feedback">El email es obligatorio</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="clave" class="form-control" type="password" placeholder="Email" th:field="*{clave}" required />
+            <label for="clave">Clave</label>
+            <div class="invalid-feedback">La clave es obligatorio</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="telefono" class="form-control" type="number" placeholder="Telefono" th:field="*{telefono}"
+                required />
+            <label for="Telefono">Telefono</label>
+            <div class="invalid-feedback">El telefono es obligatorio</div>
+        </div>
+
+        <!-- <label for="instagram">hola</label> se puede hacer click y te redirige al instagram o el id que se le coloque -->
+
+        <!-- <p>
+            <label>Enter your phone number in the format (123)456-7890
+                (<input name="tel1" type="tel" pattern="[0-9]{3}" placeholder="###" aria-label="3-digit area code"
+                    size="2" />)-
+                <input name="tel2" type="tel" pattern="[0-9]{3}" placeholder="###" aria-label="3-digit prefix"
+                    size="2" /> -
+                <input name="tel3" type="tel" pattern="[0-9]{4}" placeholder="####" aria-label="4-digit number"
+                    size="3" />
+            </label>
+        </p> -->
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="fechaNacimiento" class="form-control" type="date" th:field="*{fechaNacimiento}" required />
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <div class="invalid-feedback">La fecha de nacimiento es obligatoria</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="edad" class="form-control" type="number" placeholder="Edad" th:field="*{edad}" required />
+            <label for="Edad">Edad</label>
+            <div class="invalid-feedback">La edad es obligatoria</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="domicilio" class="form-control" type="text" placeholder="Domicilio" th:field="*{domicilio}"
+                required />
+            <label for="Domicilio">Domicilio</label>
+            <div class="invalid-feedback">El domicilio es obligatorio</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="coordenada" class="form-control" type="text" placeholder="Coordenada" th:field="*{coordenada}"
+                required />
+            <label for="Coordenada">Coordenada</label>
+            <div class="invalid-feedback">La coordenada es obligatoria</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="instagram" class="form-control" type="text" placeholder="Instagram" th:field="*{instagram}"
+                required />
+            <label for="Instagram">Instagram</label>
+            <div class="invalid-feedback">El instagram es obligatorio</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="creditos" class="form-control" type="number" placeholder="Creditos" th:field="*{creditos}"
+                required />
+            <label for="Creditos">Creditos</label>
+            <div class="invalid-feedback">Los creditos son obligatorios</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="fechaCreacionUsuario" class="form-control" type="date" th:field="*{fechaCreacionUsuario}"
+                required />
+            <label for="fechaCreacionUsuario">Fecha Creacion Usuario</label>
+            <div class="invalid-feedback">La fecha de creacion usuario es obligatoria</div>
+        </div>
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="puntuacion" class="form-control" type="number" placeholder="Puntuacion" th:field="*{puntuacion}"
+                required />
+            <label for="Puntuacion">Puntuacion</label>
+            <div class="invalid-feedback">La puntuacion es obligatoria</div>
+        </div>
+
+        <div class="row">
+            <div class="d-grid gap-2">
+                <button class="btn btn-success" type="submit"
+                    th:text="${action == 'guardar'} ? 'Crear Clasificadores' : 'Guardar'"></button>
+            </div>
+        </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
