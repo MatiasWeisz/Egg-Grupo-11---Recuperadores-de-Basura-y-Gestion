@@ -1,0 +1,30 @@
+#principal {
+    text-align: center;
+    color: blue;
+}
+
+#dos {
+    text-align: center;
+    color:black;
+}
+    
+    .logo {
+        width: 100px;
+    }
+
+#myDiv {
+  border: 5px outset rgb(13, 82, 233);
+  background-color: rgb(156, 212, 231);    
+  text-align: center;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: url(C:\Users\Emas\Desktop\Ema Riveros\EGG\PROYECTO FINAL\Egg-Grupo-11---Recuperadores-de-Basura-y-Gestion\ProyectoEgg\src\main\resources\static\Clasifica-Vertical.png);   
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+
+

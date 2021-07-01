@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title th:text="|${title} - Clasifica Lista|"></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<nav th:replace="fragments :: navbar"></nav>
+
+<body class="container">
+    <!-- <h1 th:text="${title}"></h1> -->
+    <div class="container mt-5 main">
+        <h1>Listado de clasificadores</h1>
+        <hr class="mb-5" />
+        <div th:if="${clasificadores.isEmpty()}">
+            <h5>Todavía no hay no hay clasificadores cargados. <a th:href="@{/clasificadores/crear}">Crear un
+                    clasificador.</a></h5>
+        </div>
+        <div th:unless="${clasificadores.isEmpty()}" class="table-responsive">
+            <table class="table table-hover table-sm table-bordered">
+                <thead class="table-secondary text-center">
+                    <tr>
+                        <th class="col-md-4 px-md-2" scope="col">DNI</th>
+                        <th class="col-md-4 px-md-2" scope="col">Nombre</th>
+                        <th class="col-md-4 px-md-2" scope="col">Apellido</th>
+                        <th class="col-md-4 px-md-2" scope="col">Fecha de nacimiento</th>
+                        <th class="col-md-4 px-md-2" scope="col">Edad</th>
+                        <th class="col-md-4 px-md-2" scope="col">Domicilio</th>
+                        <th class="col-md-4 px-md-2" scope="col">Coordenada</th>
+                        <th class="col-md-4 px-md-2" scope="col">Email</th>
+                        <th class="col-md-4 px-md-2" scope="col">Instagram</th>
+                        <th class="col-md-4 px-md-2" scope="col">Creditos</th>
+                        <th class="col-md-4 px-md-2" scope="col">Fecha de creacion</th>
+                        <th class="col-md-4 px-md-2" scope="col">Telefono</th>
+                        <th class="col-md-4 px-md-2" scope="col">Puntuacion</th>
+                        <th class="col-md-4 px-md-2" scope="col">Clave</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="clasificador : ${clasificadores}">
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.dni}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.nombre}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.apellido}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.fechaNacimiento}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.edad}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.domicilio}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.coordenada}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.email}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.instagram}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.creditos}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.fechaCreacionUsuario}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.telefono}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.puntuacion}"></td>
+                        <td class="col-md-3 px-md-2" th:text="${clasificador.clave}"></td>
+
+                        <td class="col-md-3 px-md-2 d-flex justify-content-around w-100">
+                            <a class="btn btn-secondary btn-sm"
+                                th:href="@{/clasificadores/editar/__${clasificador.dni}__}">Editar</a>
+                            <form th:action="@{/clasificadores/eliminar/__${clasificador.dni}__}" method="post">
+                                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                            </form>
+                        </td>
+                        
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
